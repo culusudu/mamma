@@ -812,3 +812,24 @@ footer {
     font-weight: 600;
     margin-top: 15px;
 }
+/* Stile per i cellulari (schermi piccoli) */
+@media (max-width: 768px) {
+    .hero {
+        height: 300px; /* Altezza ridotta per il telefono */
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Testo più piccolo su mobile */
+    }
+    
+    .hero-content {
+        padding: 10px !important;
+    }
+}
+
+/* Stile per computer (schermi grandi) */
+@media (min-width: 769px) {
+    .hero {
+        height: 500px; /* Altezza originale per il PC */
+    }
+}
