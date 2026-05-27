@@ -1,0 +1,814 @@
+/* ==========================================================================
+   1. VARIABILI COLORE: MODALITÀ CHIARA (BOTANICA) & MODALITÀ SCURA (FORESTA)
+   ========================================================================== */
+:root[data-theme="light"] {
+    --bg-color: #faf7f5;          /* Panna delicato e accogliente */
+    --card-bg: #ffffff;           /* Bianco puro per le card */
+    --text-main: #1c2e24;         /* Verde bosco scurissimo per i testi */
+    --text-muted: #4a6154;        /* Verde salvia per i testi secondari */
+    --accent-color: #df5474;      /* Il Rosa Tulipano esatto del logo */
+    --accent-hover: #c33d5c;      /* Rosa più scuro al passaggio del mouse */
+    --navbar-bg: rgba(250, 247, 245, 0.95); 
+    --border-color: #e8e1dd;       /* Bordi morbidi color terra/crema */
+    --form-bg: #f5efeb;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #0d1611;          /* Verde foresta scurissimo/notte */
+    --card-bg: #14221a;           /* Riquadri leggermente più chiari dello sfondo */
+    --text-main: #f3f7f5;         /* Testo bianco sporco ad alta leggibilità */
+    --text-muted: #8fa498;        /* Salvia argentato per i testi secondari */
+    --accent-color: #f77090;      /* Rosa tulipano più luminoso per il buio */
+    --accent-hover: #ff91aa;      /* Rosa acceso al passaggio del mouse al buio */
+    --navbar-bg: rgba(13, 22, 17, 0.95); 
+    --border-color: #1f3629;       /* Bordi scuri eleganti per il buio */
+    --form-bg: #1a2c22;
+}
+
+/* ==========================================================================
+   2. RESET, IMPOSTAZIONI BASE E TIPOGRAFIA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    padding-top: 90px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.home-body {
+    padding-top: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+/* ==========================================================================
+   3. NAVBAR ELEGANTE CON LOGO IMMAGINE E STRUTTURA MENU
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Rimuovi space-between, usiamo flex per controllare il contenuto */
+    display: flex;
+    justify-content: flex-end; /* Spinge tutto il contenuto a destra */
+    align-items: center;
+    padding: 0 50px; /* Spazio dai bordi */
+    height: 90px;
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 9999;
+    box-sizing: border-box; 
+}
+
+.logo-container {
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover .site-logo {
+    transform: scale(1.03);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    height: 100%;
+    /* Non serve più margin-left: auto se la navbar usa justify-content: flex-end */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--accent-color);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* INTERRUTTORE TEMA SWITCH A PASTICCA MINIMALISTA */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.theme-checkbox {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.theme-switch-label {
+    background-color: var(--form-bg);
+    border: 1px solid var(--border-color);
+    width: 75px;
+    height: 36px;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    user-select: none;
+}
+
+.switch-ball {
+    background-color: var(--accent-color);
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(223, 84, 116, 0.25);
+}
+
+.switch-sun, .switch-moon {
+    font-size: 0.95rem;
+    z-index: 1;
+}
+
+.theme-switch-label:hover {
+    border-color: var(--text-muted);
+}
+
+.theme-checkbox:checked + .theme-switch-label .switch-ball {
+    transform: translateX(39px);
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--text-main);
+    position: relative;
+    transition: transform 0.2s, color 0.3s;
+}
+
+.cart-btn:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   4. HERO COVER SECTION (SOLO HOME)
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(rgba(28, 46, 36, 0.45), rgba(28, 46, 36, 0.65)), url('copertina.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+    padding: 0 20px;
+    margin-top: 60px;
+}
+
+.hero-tag {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 25px rgba(0,0,0,0.35);
+}
+
+.hero-content .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-style: italic;
+    margin-bottom: 45px;
+}
+
+.badge-consegne {
+    display: inline-block;
+    background-color: var(--accent-color);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 20px rgba(223, 84, 116, 0.3);
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 16px 44px;
+    background-color: var(--accent-color); /* Rosa del logo */
+    color: #ffffff !important;             /* Scritta sempre bianca */
+    border: 2px solid var(--accent-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important; /* Diventa trasparente */
+    color: #ffffff !important;               /* La scritta rimane BIANCA */
+    border: 2px solid #ffffff !important;    /* Bordo bianco */
+    transform: translateY(-3px);
+}
+
+.btn-primary:hover {
+    background-color: white;
+    color: var(--text-main);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.15);
+}
+
+/* ==========================================================================
+   5. STRUTTURE TITOLI E SEZIONI
+   ========================================================================== */
+h2 {
+    font-size: 3.6rem;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    display: block;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-subtitle::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0 auto;
+}
+
+/* SEZIONE SERVIZI */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.service-card {
+    padding: 50px 35px;
+    border-radius: 16px;
+    background-color: var(--card-bg);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(28, 46, 36, 0.05);
+}
+
+.service-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   6. VETRINA PRODOTTI (CATALOGO)
+   ========================================================================== */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(28, 46, 36, 0.06);
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden; /* Fondamentale: nasconde le parti che escono dal bordo */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 300px; /* Altezza fissa: tutte le card saranno uguali */
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* CAMBIA DA 'cover' A 'contain' */
+    background-color: transparent; /* O metti il colore di sfondo della card */
+    display: block;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 20px 20px 5px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.product-price-box {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.product-price-box strong {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-card-order {
+    display: inline-block;
+    margin: 15px 30px 0 30px;
+    padding: 12px;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 25px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-card-order:hover {
+    background-color: var(--text-main);
+    border-color: var(--text-main);
+    color: white;
+}
+
+/* ==========================================================================
+   7. STRUTTURA REGALO/ORDINI VELOCI
+   ========================================================================== */
+.order-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.order-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.order-card h2 {
+    text-align: left;
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+}
+
+.warning-text {
+    color: #a33845;
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+    line-height: 1.6;
+    padding: 15px 20px;
+    background-color: #fdf2f3;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--form-bg);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 4px rgba(223, 84, 116, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.btn-buy {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* RIEPILOGO CARRELLO BOX */
+.summary-box {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    position: sticky;
+    top: 130px;
+}
+
+.summary-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.summary-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+}
+
+.btn-remove-item {
+    background: none;
+    border: none;
+    color: #a33845;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.summary-item.total {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   8. ORARI E CONTATTI
+   ========================================================================== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.hours-box, .info-box {
+    background-color: var(--card-bg);
+    padding: 45px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.hours-box h3, .info-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.hours-table td {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.hours-table tr:last-child td {
+    border-bottom: none;
+}
+
+.phone-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.phone-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.p-card {
+    background-color: var(--form-bg);
+    padding: 18px 25px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.p-card:hover {
+    background-color: var(--text-main);
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Posiziona il menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Nasconde il menu inizialmente */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-bg);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+/* Mostra il menu al passaggio del mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Link del menu */
+.dropdown-content a {
+    color: var(--text-main);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--form-bg);
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   9. BOTTONE TORNA SU E FOOTER RESPONSIVE
+   ========================================================================== */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    /* Colore rosa deciso per contrasto garantito */
+    background-color: #df5474 !important; 
+    color: white !important;             
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 9999; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+footer {
+    background-color: #121d17;
+    color: #a4b3ab;
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 0.85rem;
+    margin-top: 80px;
+}
+
+@media (max-width: 992px) {
+    .navbar { padding: 0 25px; }
+    .order-section { grid-template-columns: 1fr; }
+    .summary-box { position: static; }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content .subtitle { font-size: 1.8rem; }
+    h2 { font-size: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+}
+/* ... [Tutto il tuo CSS precedente] ... */
+
+/* Assicurazione per il bottone ordine */
+.btn-card-order {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 15px;
+}

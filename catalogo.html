@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Catalogo — Un Pensiero Fiorito</title>
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+</head>
+<body>
+   <nav class="navbar">
+    
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="catalogo.html" class="active">CATALOGO</a></li>
+            <li><a href="contatti.html">CONTATTI</a></li>
+        </ul>
+        
+        <div class="theme-switch-wrapper">
+            <input type="checkbox" id="checkbox" class="theme-checkbox">
+            <label for="checkbox" class="theme-switch-label">
+                <span class="switch-sun">☀️</span>
+                <span class="switch-ball"></span>
+                <span class="switch-moon">🌙</span>
+            </label>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', () => {
+        const theme = checkbox.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    });
+    // Mantiene il tema scelto al ricaricamento
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    checkbox.checked = (savedTheme === 'dark');
+</script>
+
+   <div class="container">
+    <h2>Il Nostro Catalogo</h2>
+    <div class="featured-grid">
+        
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="copertina.png" alt="Prodotto 1"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 1</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%201" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="foto3.png" alt="Prodotto 2"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 2</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%202" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="foto5.png" alt="Prodotto 3"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 3</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%203" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="foto6.png" alt="Prodotto 4"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 4</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%204" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="foto7.png" alt="Prodotto 5"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 5</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%205" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="foto8.png" alt="Prodotto 6"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 6</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%206" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="fototerrium.png" alt="Prodotto 7"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 7</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%207" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="mazzodifiori.png" alt="Prodotto 8"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 8</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%208" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper"><img src="orchidea.png" alt="Prodotto 9"></div>
+            <div class="product-info">
+                <h3 class="product-title">Nome Fiore 9</h3>
+                <a href="ordine.html?prodotto=Nome%20Fiore%209" class="btn-card-order">Ordina Ora</a>
+            </div>
+        </div>
+        </div>
+</div>
+</body>
+</html>

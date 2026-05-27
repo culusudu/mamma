@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Ordine Veloce — Un Pensiero Fiorito</title>
+       <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container"><img src="favicon.jpg" alt="Logo" class="site-logo"></div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="creazioni.html">Creazioni</a></li>
+                <li><a href="ordine.html" class="active">Ordine Veloce</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="order-section">
+            <div class="order-card">
+                <h2>Modulo Ordine</h2>
+                <p class="warning-text">⚠️ Consegne solo nel comune di Torino e zone limitrofe.</p>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>Prodotto selezionato</label>
+                        <input type="text" id="p" class="form-control" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="form-group">
+                        <label>Il tuo nome</label>
+                        <input type="text" id="n" class="form-control" placeholder="Inserisci il tuo nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Messaggio (opzionale)</label>
+                        <textarea id="msg" class="form-control" placeholder="Note per la consegna o dedica..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-buy">Invia su WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Legge il nome del prodotto dal link (es. ordine.html?prodotto=Rose)
+        const params = new URLSearchParams(window.location.search);
+        const prodotto = params.get('prodotto');
+        if (prodotto) document.getElementById('p').value = prodotto;
+
+        // Invia il messaggio su WhatsApp
+        document.getElementById('orderForm').onsubmit = function(e) {
+            e.preventDefault();
+            const p = document.getElementById('p').value;
+            const n = document.getElementById('n').value;
+            const m = document.getElementById('msg').value;
+            const link = `https://wa.me/393403167663?text=Ordine: ${p}%0D%0ADa: ${n}%0D%0AMessaggio: ${m}`;
+            window.open(link);
+        };
+    </script>
+</body>
+</html>

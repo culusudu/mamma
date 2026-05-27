@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orari e Contatti — Un Pensiero Fiorito</title>
+        <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    // Applica il tema salvato prima che il resto della pagina carichi
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+</head>
+<body>
+<body style="background-color: #faf7f5;"></body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="favicon.jpg" alt="Un Pensiero Fiorito Logo" class="site-logo">
+        </div>
+        
+        <div class="nav-container">
+           <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    
+    <li class="dropdown">
+        <a href="catalogo.html">Catalogo ▼</a>
+        <div class="dropdown-content">
+            <a href="catalogo.html#san-valentino">San Valentino</a>
+            <a href="catalogo.html#candele">Candele</a>
+            <a href="catalogo.html#novita">Novità</a>
+            <a href="catalogo.html#orchidee">Orchidee</a>
+            <a href="catalogo.html#bouquets">Bouquet</a>
+            <a href="catalogo.html#piante">Piante</a>
+            </div>
+    </li>
+    <li><a href="contatti.html" class="active">Contatti</a></li>
+</ul>
+
+            <div class="nav-icons">
+                <div class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-checkbox" class="theme-checkbox">
+                    <label for="theme-toggle-checkbox" class="theme-switch-label">
+                        <span class="switch-sun">☀️</span>
+                        <span class="switch-ball"></span>
+                        <span class="switch-moon">🌙</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <span class="section-subtitle">Dove trovarci</span>
+        <h2>Orari & Contatti</h2>
+        <div class="contact-wrapper">
+            
+            <div class="hours-box">
+                <h3>Orari di Apertura</h3>
+                <table class="hours-table">
+                    <tr><td>Lunedì</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Martedì</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Mercoledì</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Giovedì</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Venerdì</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Sabato</td><td>09:30 – 13:30 | 16:00 – 19:00</td></tr>
+                    <tr><td>Domenica</td><td>Chiuso (escluse festività)</td></tr>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <h3>Contatta la Boutique</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                    Hai bisogno di una composizione urgente o di un fiore particolare? Chiamaci direttamente in negozio, Erika e Sabiana ti aiuteranno subito.
+                </p>
+                <div class="phone-cards-container">
+                    <a href="tel:+39" class="phone-card-link">
+                        <div class="p-card">
+                            <span>📞 Telefono Negozio</span>
+                            <strong>011 7640451</strong>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/393403167663" class="phone-card-link" target="_blank" style="text-decoration: none;">
+    <div class="p-card" style="border-color: #25D366; padding: 15px;">
+        <div style="font-weight: bold; margin-bottom: 8px;">💬 WhatsApp Diretto</div>
+        
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <strong style="margin-bottom: 5px;">+39 3403167663</strong>
+            <strong>+39 3473086764 </strong>
+        </div>
+    </div>
+</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Un Pensiero Fiorito di Erika e Sabiana — Tutti i diritti riservati.</p>
+    </footer>
+
+   <button class="back-to-top-btn" id="backToTop">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

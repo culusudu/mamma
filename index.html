@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Pensiero Fiorito — Erika & Sabiana</title>
+     <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    // Applica il tema salvato prima che il resto della pagina carichi
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+</head>
+<body class="home-body">
+<body style="background-color: #faf7f5;"></body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="favicon.jpg" alt="Un Pensiero Fiorito Logo" class="site-logo">
+        </div>
+        
+        <div class="nav-container">
+            <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    
+    <li class="dropdown">
+        <a href="catalogo.html">Catalogo ▼</a>
+        <div class="dropdown-content">
+            <a href="catalogo.html#san-valentino">San Valentino</a>
+            <a href="catalogo.html#candele">Candele</a>
+            <a href="catalogo.html#novita">Novità</a>
+            <a href="catalogo.html#orchidee">Orchidee</a>
+            <a href="catalogo.html#bouquets">Bouquet</a>
+            <a href="catalogo.html#piante">Piante</a>
+            </div>
+    </li>
+    <li><a href="contatti.html">Contatti</a></li>
+</ul>
+
+            <div class="nav-icons">
+                <div class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-checkbox" class="theme-checkbox">
+                    <label for="theme-toggle-checkbox" class="theme-switch-label">
+                        <span class="switch-sun">☀️</span>
+                        <span class="switch-ball"></span>
+                        <span class="switch-moon">🌙</span>
+                    </label>
+                </div>
+
+                <button class="cart-btn" onclick="location.href='catalogo.html#sezione-ordine'">
+                    🛒 <span class="cart-count" id="global-cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Boutique Floreale</span>
+            <h1>Un Pensiero Fiorito</h1>
+            <p class="subtitle">di Erika e Sabiana</p>
+            <div class="badge-consegne">🚚 Consegna a domicilio attiva a Torino e dintorni</div>
+            <br>
+            <a href="catalogo.html" class="btn-primary">Scopri il Catalogo</a>
+        </div>
+    </header>
+
+    <section class="container">
+        <span class="section-subtitle">Cosa facciamo</span>
+        <h2>I Nostri Servizi</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🌸</span>
+                <h3>Bouquet Su Misura</h3>
+                <p>Creazioni uniche nate per emozionare, confezionate a mano con fiori freschi recisi ogni mattina.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌿</span>
+                <h3>Allestimenti Eventi</h3>
+                <p>Rendiamo indimenticabili i tuoi giorni più importanti, dai matrimoni alle ricorrenze speciali.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏡</span>
+                <h3>Piante & Arredo</h3>
+                <p>Una selezione ricercata di piante da interno ed esterno per dare vita e colore ai tuoi spazi.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Un Pensiero Fiorito di Erika e Sabiana — Tutti i diritti riservati.</p>
+    </footer>
+
+    <button class="back-to-top-btn" id="backToTop">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
