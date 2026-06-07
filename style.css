@@ -834,3 +834,35 @@ footer {
         height: 500px; /* Altezza originale per il PC */
     }
 }
+
+.social-links {
+    margin-bottom: 15px;
+    font-size: 28px; /* Leggermente più grandi per vederle meglio */
+}
+
+.social-links a {
+    margin: 0 15px; /* Più spazio tra le icone */
+    color: #a67c52; /* <--- CAMBIA QUESTO CON IL COLORE CHE PREFERISCI */
+    transition: all 0.3s ease; /* Effetto fluido al passaggio del mouse */
+}
+
+.social-links a:hover {
+    color: #d4a373; /* Un colore leggermente più chiaro per quando ci passi sopra */
+    transform: scale(1.2); /* L'icona si ingrandisce leggermente al passaggio del mouse */
+}
+
+.btn-satispay {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ff3333; /* Rosso Satispay */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-satispay:hover {
+    background-color: #cc0000;
+}

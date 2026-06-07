@@ -2,69 +2,90 @@
 <html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completa il tuo Ordine — Un Pensiero Fiorito</title>
     <link rel="stylesheet" href="style.css">
-    <title>Ordine Veloce — Un Pensiero Fiorito</title>
-       <link rel="icon" type="image/jpeg" href="favicon.jpg">
-
+    <style>
+        .pagamento-box {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .btn-satispay {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ff3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+        .btn-satispay:hover { background-color: #cc0000; }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #faf7f5;">
+
     <nav class="navbar">
-        <div class="logo-container"><img src="favicon.jpg" alt="Logo" class="site-logo"></div>
+        <div class="logo-container">
+            <img src="favicon.jpg" alt="Logo" class="site-logo">
+        </div>
         <div class="nav-container">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="catalogo.html">Catalogo</a></li>
-                <li><a href="creazioni.html">Creazioni</a></li>
-                <li><a href="ordine.html" class="active">Ordine Veloce</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <section class="order-section">
-            <div class="order-card">
-                <h2>Modulo Ordine</h2>
-                <p class="warning-text">⚠️ Consegne solo nel comune di Torino e zone limitrofe.</p>
-                <form id="orderForm">
-                    <div class="form-group">
-                        <label>Prodotto selezionato</label>
-                        <input type="text" id="p" class="form-control" readonly style="background:#f0f0f0;">
-                    </div>
-                    <div class="form-group">
-                        <label>Il tuo nome</label>
-                        <input type="text" id="n" class="form-control" placeholder="Inserisci il tuo nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Messaggio (opzionale)</label>
-                        <textarea id="msg" class="form-control" placeholder="Note per la consegna o dedica..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-buy">Invia su WhatsApp</button>
-                </form>
+    <main class="container" style="padding-top: 50px;">
+        <div class="pagamento-box">
+            <h2>Completa il tuo ordine</h2>
+            <p>Grazie per aver scelto Un Pensiero Fiorito. Procedi col pagamento per confermare la tua richiesta.</p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+            <h3>Metodo di pagamento preferito</h3>
+            <p>Puoi pagare in tutta sicurezza tramite Satispay:</p>
+            
+            <a href="https://www.satispay.com/app/open/shops/9f12aa30-b92d-4d96-ba81-44c9f6db3e9e" target="_blank" class="btn-satispay">
+                Paga con Satispay 📱
+            </a>
+
+            <div style="margin-top: 30px;">
+                <h3>Hai bisogno di aiuto?</h3>
+                <p>Se preferisci pagare tramite bonifico o hai domande sulla consegna, scrivici direttamente su WhatsApp:</p>
+                <a href="https://wa.me/3403167663?text=Ciao,%20vorrei%20confermare%20un%20ordine." target="_blank" class="btn-whatsapp">
+                    Scrivici su WhatsApp 💬
+                </a>
             </div>
-        </section>
+        </div>
+    </main>
+
+  <footer>
+    <div class="social-links">
+        <a href="https://www.instagram.com/unpensierofiorito/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/unpensierofioritoo" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="LINK_TIKTOK" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
-
-    <script>
-        // Legge il nome del prodotto dal link (es. ordine.html?prodotto=Rose)
-        const params = new URLSearchParams(window.location.search);
-        const prodotto = params.get('prodotto');
-        if (prodotto) document.getElementById('p').value = prodotto;
-
-        // Invia il messaggio su WhatsApp
-        document.getElementById('orderForm').onsubmit = function(e) {
-            e.preventDefault();
-            const p = document.getElementById('p').value;
-            const n = document.getElementById('n').value;
-            const m = document.getElementById('msg').value;
-            const link = `https://wa.me/393403167663?text=Ordine: ${p}%0D%0ADa: ${n}%0D%0AMessaggio: ${m}`;
-            window.open(link);
-        };
-    </script>
-
-     <footer>
-        <p>&copy; Un Pensiero Fiorito, Via Garibaldi 53/bis 10122 Torino — Tutti i diritti riservati.</p>
-    </footer>
-    
+    <p>&copy; 2026 Un Pensiero Fiorito di Erika e Sabiana — Tutti i diritti riservati.</p>
+</footer>
 </body>
 </html>
